@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!--<script>-->
+    var myArray ={"iss" : [
+        {
+            "message": "success",
+            "timestamp": UNIX_TIME_STAMP,
+            "iss_position": {
+                "latitude": "51.508742"
+//                    "longitude": CURRENT_LONGITUDE
+            }
+        }
+    ]};
+
+    <!--document.getElementById("googleMap").innerHTML=myArray.iss[0].message + " " + myArray.iss[0].iss_position.latitude;-->
+
+<!--</script>-->
+    <script src="http://api.open-notify.org/iss-now.json" type="text/javascript"></script>
+
+    <script>
+        var data={
+            "firstName":"Ray",
+            "lastName":"Villalobos",
+            "joined":2012
+        };
+        document.getElementById("placeholder").innerHTML=data.firstName+" "+data.lastName+" "+data.joined;
+    </script>
+</head>
+
+
+<body>
+
+<div id="placeholder"></div>
+
+
+</body>
+</html>
