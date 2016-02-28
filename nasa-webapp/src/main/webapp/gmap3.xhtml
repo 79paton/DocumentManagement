@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<head>
+    <title> Test Page 444 </title>
+
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <!--<script src="http://api.open-notify.org/iss-now.json" type="text/javascript"></script>-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <link rel="stylesheet" href="resources/css/stylesheet.css" type="text/css" />
+
+    <script language="javascript" type="text/javascript">
+
+        //<!-- This Requires JSON To pull lat & long via site See Array.html -->
+
+        //        function moveIss(){
+
+        //        });
+        //
+        //        //     document.write( " Latitude: " +  lat + " Longitude: " + lon);
+        //
+        //
+        //            var myArray = [
+        //                {
+        //                    "message": "success",
+        //                    "timestamp": UNIX_TIME_STAMP,
+        //                    "iss_position": {
+        //                        "latitude": -23.865427,
+        //                        "longitude": 145.196123
+        //                    }
+        //                }
+        //            ];
+        //            var myIss = new google.maps.LatLng(document.getElementById("googleMap").innerHTML =
+        //                    myArray[0].iss_position.longitude + "  " + myArray[0].iss_position.latitude);
+
+        var map;
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 2,
+                center: {lat: -33.865427, lng: 151.196123},
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            };
+
+            map = new google.maps.Map(document.getElementById('map'),
+                    mapOptions);
+
+            var script = document.createElement('script');
+            script.src = 'http://api.open-notify.org/iss-now.json?callback=?';
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+<!--<p:gmap id="googleMap" center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:800px" />-->
+<p:gmap id="map" center="51.508742,-0.120850" zoom="15" type="HYBRID" style="width:100%;height:800px" />
+
+
+</body>
+</html>

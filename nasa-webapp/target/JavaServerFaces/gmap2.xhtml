@@ -69,40 +69,31 @@
 //    setTimeout(moveISS, 5000);
 //}
 
-
-
-
 $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
 //    var output = "";
     var lat = data['iss_position']['latitude' ];
     var lon = data['iss_position']['longitude'];
 
 //    $.each(data, function(index, node) {
-//        lat, lon += node.latitude + ": " + node.longitude + ": ";
+//        lat += node.latitude + ": ";
+//        lon += node.longitude + ": ";
 //    });
     document.write( " Latitude: " +  lat + " Longitude: " + lon);
-
 
 //    document.getElementById("googleMap").innerHTML =
 //            myArray[0].iss_position.longitude + "  " + myArray[0].iss_position.latitude;
 });
 
-
-
-var myArray = [
-    {
-//        "message": "success",
-//        "timestamp": UNIX_TIME_STAMP,
-        "iss_position": {
-            "latitude": CURRENT_LATITUDE,
-            "longitude": CURRENT_LONGITUDE
-        }
-    }
-];
-
-
-
-
+//var myArray = [
+//    {
+////        "message": "success",
+////        "timestamp": UNIX_TIME_STAMP,
+//        "iss_position": {
+//            "latitude": CURRENT_LATITUDE,
+//            "longitude": CURRENT_LONGITUDE
+//        }
+//    }
+//];
 
 </script>
 

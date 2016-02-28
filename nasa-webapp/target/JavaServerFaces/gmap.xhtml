@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-            xmlns:h="http://java.sun.com/jsf/html"
-            xmlns:f="http://java.sun.com/jsf/core"
-            xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <head>
     <title> Test Page 444 </title>
 
@@ -15,51 +15,47 @@
 
     <script type="text/javascript">
 
-        var lat = "27.508742";
-        var lon = "-0.120444";
-<!-- This Requires JSON To pull lat & long via site See Array.html -->
-//$.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
-
-//    var lat = data['iss_position']['latitude'];
-//    var lon = data['iss_position']['longitude'];
-
-//     document.write( " Latitude: " +  lat + " Longitude: " + lon);
-//});
+        var markersArray = [];
+        var map;
 
             function initialize() {
-//                $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function (data) {
-//
-//                    var lat = data['iss_position']['latitude'];
-//                    var lon = data['iss_position']['longitude'];
 
-                    var myCenter = new google.maps.LatLng(lat, lon);
-                    var myType = google.maps.MapTypeId.ROADMAP;
-                    var myZoom = 7;
+                var myCenter = new google.maps.LatLng(56.4640, 2.9700);
+                var myType = google.maps.MapTypeId.TERRAIN;
+                var myZoom = 3;
 
-                    var mapProp = {
-                        center: myCenter,
-                        zoom: myZoom,
-                        mapTypeId: myType
-                    };
-                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                var mapProp = {
+                    center: myCenter,
+                    zoom: myZoom,
+                    mapTypeId: myType
+                };
+                map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                addMarker();
+            }
 
-                    var marker = new google.maps.Marker({
-                        position: myCenter,
+            function addMarker() {
+                $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function (data) {
+                    var lat = data['iss_position']['latitude'];
+                    var lon = data['iss_position']['longitude'];
+
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(lat, lon),
+                        map: map,
                         icon: 'resources/images/iss3.png'
                     });
+                    markersArray.push(marker);
+                    setTimeout(initialize, 5000);
+                });
+            }
 
-                    marker.setMap(map);
-                }
+            function loadScript() {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&amp;callback=initialize";
+                document.body.appendChild(script);
+            }
 
-                function loadScript() {
-                    var script = document.createElement("script");
-                    script.type = "text/javascript";
-                    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&amp;callback=initialize";
-                    document.body.appendChild(script);
-                }
-
-                window.onload = loadScript;
-
+            window.onload = loadScript;
 
     </script>
 </head>
